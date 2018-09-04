@@ -10,12 +10,19 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const Review = mongoose.model('Review', {
-  title: String
+  title: String,
+  description: String,
+  movieTitle: String,
+  number: String
 });
 
 app.post('/reviews', (req, res) => {
-  console.log(req.body);
-  // res.render('reviews-new', {});
+  Review.create(req.body).then((review) => {
+    console.log(review);
+    res.redirect('/');
+  }).catch((err) => {
+    console.log(err.message);
+  })
 })
 
 app.get('/reviews/new', (req, res) => {

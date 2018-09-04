@@ -3,8 +3,31 @@
     <legend>New Review</legend>
     <!-- TITLE -->
     <p>
-      <label for="title">Title</label><br>
-      <input type="text" name="title" />
+      <label for="review-title">Title</label><br>
+      <input id="review-title" type="text" name="title" />
+    </p>
+
+    <!-- MOVIE TITLE -->
+    <p>
+      <label for="movie-title">Movie Title</label><br>
+      <input id="movie-title" type="text" name="movieTitle" />
+    </p>
+
+    <!-- DESCRIPTION -->
+    <p>
+      <label for="description-text">Description</label><br>
+      <textarea id="description-text" name="description" rows="10" /></textarea>
+    </p>
+    <p>
+        <label for="number">Rating</label><br>
+        <select id="rating" name="rating">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
     </p>
   </fieldset>
 
