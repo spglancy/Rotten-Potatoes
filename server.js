@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const Review = require('./models/review');
 const Comments = require('./models/comments.js');
 
+const port = process.env.PORT || 3000;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -22,6 +23,6 @@ reviewController(app);
 commentController(app);
 movies(app);
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('App listening on port 3000!')
 })
