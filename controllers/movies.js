@@ -17,10 +17,9 @@ app.get('/movies/:id', (req, res) => {
     } else {
       renderTemplate(movie)
     }
-
     function renderTemplate(movie)  {
       res.render('movies-show', { movie: movie });
     }
-
   }).catch(console.error)
 })
+}

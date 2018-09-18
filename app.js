@@ -7,7 +7,7 @@ const methodOverride = require('method-override');
 const Review = require('./models/review');
 const Comments = require('./models/comments.js');
 
-mongoose.connect('mongodb://localhost/rotten-potatoes');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
