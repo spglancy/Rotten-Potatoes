@@ -30,7 +30,7 @@ module.exports = function(app) {
         })
     })
 
-    app.get('/', (req, res) => {
+    app.get('/reviews', (req, res) => {
         Review.find().then(reviews => {
                 res.render('reviews-index', {
                     reviews: reviews

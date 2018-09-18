@@ -13,10 +13,14 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+
+const movies = require('./controllers/movies.js');
 const commentController = require('./controllers/commentController.js');
 const reviewController = require('./controllers/reviewController.js');
+
 reviewController(app);
 commentController(app);
+movies(app);
 
 app.listen(3000, () => {
   console.log('App listening on port ${port}!')
