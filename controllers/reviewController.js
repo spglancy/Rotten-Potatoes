@@ -1,11 +1,11 @@
 var Review = require('../models/review.js');
 var Comment = require('../models/comments');
-module.exports = function(app) {
 
+module.exports = function (app) {
     app.post('/reviews', (req, res) => {
         Review.create(req.body).then((review) => {
             console.log(review)
-            res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
+            res.redirect(`/reviews/movie/${review.movieTitle}`) // Redirect to reviews/:id
         }).catch((err) => {
             console.log(err.message)
         })
@@ -21,7 +21,7 @@ module.exports = function(app) {
             })
     })
 
-    app.delete('/reviews/:id', function(req, res) {
+    app.delete('/reviews/:id', function (req, res) {
         console.log("DELETE review")
         Review.findByIdAndRemove(req.params.id).then((review) => {
             res.redirect('/');
@@ -32,10 +32,10 @@ module.exports = function(app) {
 
     app.get('/reviews', (req, res) => {
         Review.find().then(reviews => {
-                res.render('reviews-index', {
-                    reviews: reviews
-                });
-            })
+            res.render('reviews-index', {
+                reviews: reviews
+            });
+        })
             .catch((err) => {
                 console.log(err);
             })
@@ -45,8 +45,8 @@ module.exports = function(app) {
         res.render('reviews-new', {});
     })
 
-    app.get('/reviews/:id/edit', function(req, res) {
-        Review.findById(req.params.id, function(err, review) {
+    app.get('/reviews/:id/edit', function (req, res) {
+        Review.findById(req.params.id, function (err, review) {
             res.render('reviews-edit', {
                 review: review
             });
@@ -71,4 +71,15 @@ module.exports = function(app) {
             console.log(err.message)
         });
     });
+
+    app.get('/reviews/movie/:movie', (req, res) => {
+        Review.find({ movieTitle: req.params.movie })
+            .then(reviews => {
+                console.log(reviews)
+                res.render('reviews-index', {
+                    reviews: reviews,
+                    movieTitle: req.params.movie
+                })
+            })
+    })
 }

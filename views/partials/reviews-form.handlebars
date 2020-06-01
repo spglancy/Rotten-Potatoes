@@ -1,35 +1,30 @@
 <fieldset>
-  <legend>Edit Review</legend>
+  <legend>Add a Review</legend>
   <!-- TITLE -->
   <div class="form-group">
     <label for="review-title">Title</label><br>
-    <input class="form-control" id="review-title" type="text" name="title" value="{{review.title}}"/>
-  </div>
-
-  <!-- MOVIE TITLE -->
-  <div class="form-group">
-    <label for="movie-title">Movie Title</label><br>
-    <input class="form-control" id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
+    <input class="form-control" id="review-title" type="text" name="title" value="{{review.title}}" />
   </div>
 
   <!-- DESCRIPTION -->
   <div class="form-group">
-    <label for="review-description">Description</label><br>
-    <textarea class="form-control" id="review-description" name="description" rows="10" />{{review.description}}</textarea>
+    <label for="review-description">Review</label><br>
+    <textarea class="form-control" id="review-description" name="description"
+      rows="10" />{{review.description}}</textarea>
   </div>
 
   <p>
-      <div class="form-group">
+    <div class="form-group">
       <label for="rating">Rating</label><br>
       <select id="rating" name="rating">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </select>
-  </div>
+    </div>
   </p>
   <a href="/">Cancel</a>
 </fieldset>

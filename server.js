@@ -1,16 +1,15 @@
+const dotenv = require("dotenv").config()
 const express = require('express');
 const app = express();
 var exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const Review = require('./models/review');
-const Comments = require('./models/comments.js');
 
 const port = process.env.PORT || 3000;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
