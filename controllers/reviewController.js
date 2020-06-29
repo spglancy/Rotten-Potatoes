@@ -3,6 +3,7 @@ var Comment = require('../models/comments');
 
 module.exports = function (app) {
     app.post('/reviews', (req, res) => {
+        console.log("req", req.body)
         Review.create(req.body).then((review) => {
             console.log(review)
             res.redirect(`/reviews/movie/${review.movieTitle}`) // Redirect to reviews/:id
@@ -75,7 +76,7 @@ module.exports = function (app) {
     app.get('/reviews/movie/:movie', (req, res) => {
         Review.find({ movieTitle: req.params.movie })
             .then(reviews => {
-                console.log(reviews)
+                console.log(req.params.movie)
                 res.render('reviews-index', {
                     reviews: reviews,
                     movieTitle: req.params.movie

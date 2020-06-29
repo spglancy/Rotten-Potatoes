@@ -11,8 +11,8 @@
         </div>
         <a href='/reviews/movie/{{movie.title}}'>View Reviews</a>
         <form method="POST" action="/reviews">
-            <input type='hidden' name='movieTitle' value={{movie.title}} />
-            <input type='hidden' name='review-title' value={{movie.title}} />
+            <input type='hidden' name='movieTitle' value='{{movie.title}}' />
+            <input type='hidden' name='review-title' value='{{movie.title}}' />
             {{> reviews-form}}
             <!-- BUTTON -->
             <div class="form-group">
